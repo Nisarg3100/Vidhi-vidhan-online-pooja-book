@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #4CAF50;
+        }
+        .service-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .service-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .service-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .service-card h3 {
+            margin: 15px 0;
+            color: #333;
+        }
+        .service-card p {
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="service-container">
+            <div class="service-card">
+                <img src="ganesh.jpg" alt="Ganesh Pooja Image">
+                <h3>Ganesh Pooja</h3>
+                <p>A traditional pooja for prosperity and success...</p>
+            </div>
+            <div class="service-card">
+                <img src="laxmi.jpg" alt="Lakshmi Pooja Image">
+                <h3>Lakshmi Pooja</h3>
+                <p>Bring wealth and health to your home...</p>
+            </div>
+            <div class="service-card">
+                <img src="navratri.jpg" alt="Navratri Pooja Image">
+                <h3>Navratri Pooja</h3>
+                <p>Celebrate Navratri with prayers and rituals...</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
