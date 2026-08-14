@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+/* Base Styles */
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+/* Signup Container Styles */
+.signup-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.signup-container h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    font-size: 15px;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+    color: #555;
+}
+
+/* Button Styles */
+.btn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Social Login Buttons */
+.google-button,
+.whatsapp-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.google-button {
+    background-color: #4285F4;
+    color: white;
+}
+
+.google-button:hover {
+    background-color: #357ABD;
+}
+
+.whatsapp-button {
+    background-color: #25D366;
+    color: white;
+}
+
+.whatsapp-button:hover {
+    background-color: #1DA851;
+}
+
+.google-button img,
+.whatsapp-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Divider Text */
+.text-center.mt-3 {
+    position: relative;
+    margin: 20px 0;
+    color: #777;
+}
+
+.text-center.mt-3:before,
+.text-center.mt-3:after {
+    content: "";
+    display: inline-block;
+    width: 30%;
+    height: 1px;
+    background: #ddd;
+    position: relative;
+    vertical-align: middle;
+}
+
+.text-center.mt-3:before {
+    right: 10px;
+    margin-left: -50%;
+}
+
+.text-center.mt-3:after {
+    left: 10px;
+    margin-right: -50%;
+}
+
+/* Success Message */
+.success-message {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    display: none;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.success-message h4 {
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    .signup-container {
+        margin: 20px auto;
+        padding: 20px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+}
+
+/* Hidden Elements */
+[style*="display:none"] {
+    display: none !important;
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Vidhi Vidhan</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="signup-container">
+        <h2 class="text-center">Login</h2>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number:</label>
+                <input type="text" id="mobile" class="form-control" placeholder="Enter your mobile number" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">Signup</button>
+        </form>
+
+        <p class="text-center mt-3">or</p>
+
+        <!-- Google Sign-In Button -->
+        <div class="google-button" id="g_id_onload">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" alt="Google">
+            Sign up with Google
+        </div>
+
+        <!-- WhatsApp Login Button -->
+        <div class="whatsapp-button" id="whatsapp-button">
+            <img src="whatsapp.jpg" alt="WhatsApp">
+            Login with WhatsApp
+        </div>
+
+        <!-- WhatsApp Number Form (hidden by default) -->
+        <div id="whatsapp-form" style="display:none;">
+            <div class="form-group">
+                <label for="whatsapp-number">Enter Your Registered WhatsApp Number:</label>
+                <input type="text" id="whatsapp-number" class="form-control" placeholder="Enter your mobile number" required>
+            </div>
+            <button type="button" class="btn btn-primary btn-block" id="submit-whatsapp-login">Submit</button>
+        </div>
+
+        <!-- Success Message -->
+        <div class="success-message" id="success-message">
+            <h4>Signup Successful!</h4>
+            <button class="btn btn-success mt-3" onclick="redirectToIndex()">Now you can process for pooja booking</button>
+        </div>
+    </div>
+
+    <!-- Sound Element -->
+    <audio id="success-sound" src="success-sound.mp3"></audio>
+
+    <script>
+        // Function to handle form submission
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validate mobile number (basic format check)
+            const mobile = document.getElementById('mobile').value;
+            const mobilePattern = /^[0-9]{10}$/;  // 10 digits for mobile number
+            if (!mobile.match(mobilePattern)) {
+                alert("Please enter a valid 10-digit mobile number.");
+                return;
+            }
+
+            // Play success sound
+            const sound = document.getElementById('success-sound');
+            sound.play();
+
+            // Wait for sound to complete, then redirect
+            sound.onended = () => {
+                window.location.href = 'index.html';
+            };
+
+            // Hide the form and Google button
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('g_id_onload').style.display = 'none';
+
+            // Show the success message
+            document.getElementById('success-message').style.display = 'block';
+        });
+
+        // Initialize Google Login
+        window.onload = () => {
+            google.accounts.id.initialize({
+                client_id: "YOUR_GOOGLE_CLIENT_ID",
+                callback: handleGoogleLogin
+            });
+            google.accounts.id.renderButton(
+                document.getElementById("g_id_onload"),
+                { theme: "outline", size: "large" }
+            );
+        };
+
+        // Google Login Callback
+        function handleGoogleLogin(response) {
+            // Show email/password form after Google login click
+            document.getElementById('email-password-form').style.display = 'block';
+            document.getElementById('g_id_onload').style.display = 'none';
+        }
+
+        // WhatsApp login button click event
+        document.getElementById('whatsapp-button').addEventListener('click', function() {
+            document.getElementById('whatsapp-form').style.display = 'block';
+            document.getElementById('whatsapp-button').style.display = 'none';
+        });
+
+        // Submit WhatsApp number form
+        document.getElementById('submit-whatsapp-login').addEventListener('click', function() {
+            const whatsappNumber = document.getElementById('whatsapp-number').value;
+
+            if (whatsappNumber) {
+                // Perform additional validation or processing here
+
+                const sound = document.getElementById('success-sound');
+                sound.play();
+
+                sound.onended = () => {
+                    window.location.href = 'index.html';
+                };
+
+                // Hide the form
+                document.getElementById('whatsapp-form').style.display = 'none';
+
+                // Show the success message
+                document.getElementById('success-message').style.display = 'block';
+            } else {
+                alert("Please enter your registered WhatsApp number.");
+            }
+        });
+
+        // Redirect to index.html
+        function redirectToIndex() {
+            window.location.href = 'index.html';
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Confirmation | VidhiVidhan</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4a6b57;
+            --secondary-color: #f8f1e5;
+            --accent-color: #d4a762;
+            --text-color: #333333;
+            --light-text: #777777;
+            --white: #ffffff;
+            --dark-bg: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Video Background with Overlay */
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0.7;
+        }
+        
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(74, 107, 87, 0.2) 0%, rgba(44, 62, 80, 0.3) 100%);
+            z-index: -1;
+        }
+
+        /* Floating Particles Animation */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100vw) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header Styles with 3D Effect */
+        .navbar {
+            background: linear-gradient(145deg, var(--primary-color), #3a5a46) !important;
+            padding: 0.8rem 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 
+                        0 10px 10px rgba(0, 0, 0, 0.15),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateZ(10px);
+            position: relative;
+            z-index: 100;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transform: perspective(500px) rotateX(5deg);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: perspective(500px) rotateX(0deg) translateZ(10px);
+        }
+
+        .navbar-brand img {
+            margin-right: 10px;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Main Content Container with 3D Effect */
+        .main-container {
+            padding: 2rem 1rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 241, 229, 0.95));
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 
+                        0 10px 10px rgba(0, 0, 0, 0.15),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateX(2deg);
+            transition: all 0.5s ease;
+            animation: containerAppear 1s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color), var(--accent-color));
+            transform: translateY(-5px);
+            opacity: 0.8;
+        }
+
+        @keyframes containerAppear {
+            0% {
+                opacity: 0;
+                transform: perspective(1000px) rotateX(10deg) translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: perspective(1000px) rotateX(2deg) translateY(0);
+            }
+        }
+
+        .main-container:hover {
+            transform: perspective(1000px) rotateX(0deg) translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 
+                        0 15px 15px rgba(0, 0, 0, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        /* Page Title with 3D Text Effect */
+        .page-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1), 
+                         4px 4px 0px rgba(0, 0, 0, 0.05);
+            transform: perspective(500px) rotateX(5deg);
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% {
+                text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1), 
+                             4px 4px 0px rgba(0, 0, 0, 0.05),
+                             0 0 5px rgba(212, 167, 98, 0.5);
+            }
+            100% {
+                text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1), 
+                             4px 4px 0px rgba(0, 0, 0, 0.05),
+                             0 0 15px rgba(212, 167, 98, 0.8);
+            }
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            animation: linePulse 2s infinite;
+        }
+
+        @keyframes linePulse {
+            0%, 100% {
+                opacity: 0.7;
+                width: 100px;
+            }
+            50% {
+                opacity: 1;
+                width: 150px;
+            }
+        }
+
+        /* Receipt Table with 3D Effect */
+        .receipt-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            transform: perspective(1000px) rotateX(1deg);
+            transition: all 0.3s ease;
+        }
+
+        .receipt-table:hover {
+            transform: perspective(1000px) rotateX(0deg);
+        }
+
+        .receipt-table th {
+            background: linear-gradient(145deg, var(--primary-color), #3a5a46);
+            color: var(--white);
+            padding: 12px 15px;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            position: relative;
+            border: none;
+        }
+
+        .receipt-table th::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+        }
+
+        .receipt-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(224, 224, 224, 0.5);
+            position: relative;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .receipt-table tr {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .receipt-table tr:nth-child(even) {
+            background: linear-gradient(90deg, rgba(248, 241, 229, 0.3), rgba(248, 241, 229, 0.1));
+        }
+
+        .receipt-table tr:hover {
+            background: rgba(212, 167, 98, 0.1);
+            transform: translateZ(5px);
+        }
+
+        .receipt-table tr:hover td {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Confirmation Message with 3D Effect */
+        .confirmation-message {
+            background: linear-gradient(145deg, rgba(40, 167, 69, 0.15), rgba(40, 167, 69, 0.05));
+            border-left: 4px solid #28a745;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            transform: perspective(1000px) rotateX(1deg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .confirmation-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            20%, 100% {
+                left: 100%;
+            }
+        }
+
+        .confirmation-message:hover {
+            transform: perspective(1000px) rotateX(0deg) translateZ(5px);
+            box-shadow: 0 10px 25px rgba(40, 167, 69, 0.2);
+        }
+
+        .confirmation-message h4 {
+            color: #28a745;
+            font-weight: 600;
+            margin-bottom: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Buttons with 3D Effect */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            perspective: 1000px;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transform: translateZ(0);
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 
+                        inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) translateZ(5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), 
+                        inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(2px) translateZ(0);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), 
+                        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover::before {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: linear-gradient(145deg, var(--primary-color), #3a5a46);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(145deg, var(--accent-color), #c09552);
+            color: var(--text-color);
+        }
+
+        .btn-success:hover {
+            color: var(--white);
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-color);
+            opacity: 0;
+            z-index: 1000;
+            animation: confettiFall 5s ease-in forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        /* Footer with 3D Effect */
+        footer {
+            background: linear-gradient(145deg, var(--dark-bg), #1e2a36);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 100;
+        }
+
+        .footer-links {
+            margin-top: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--accent-color);
+            margin: 0 0.5rem;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            text-shadow: 0 0 5px rgba(212, 167, 98, 0.5);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Success Checkmark Animation */
+        .checkmark-container {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 5;
+            stroke: #28a745;
+            stroke-miterlimit: 10;
+            box-shadow: 0 0 20px rgba(40, 167, 69, 0.3);
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+            transform: translateZ(0);
+        }
+
+        .checkmark-circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 5;
+            stroke-miterlimit: 10;
+            stroke: #28a745;
+            fill: none;
+            animation: stroke .6s cubic-bezier(0.650, 0.000, 0.450, 1.000) forwards;
+        }
+
+        .checkmark-check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) .8s forwards;
+        }
+
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes scale {
+            0%, 100% {
+                transform: none;
+            }
+            50% {
+                transform: scale3d(1.1, 1.1, 1);
+            }
+        }
+
+        @keyframes fill {
+            100% {
+                box-shadow: 0 0 30px rgba(40, 167, 69, 0.5);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 1rem;
+                padding: 1.5rem;
+                transform: perspective(0) rotateX(0);
+            }
+            
+            .main-container:hover {
+                transform: translateY(-3px);
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .receipt-table {
+                font-size: 0.85rem;
+                transform: perspective(0) rotateX(0);
+            }
+
+            .receipt-table th, 
+            .receipt-table td {
+                padding: 8px 10px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .main-container {
+                padding: 1rem;
+            }
+
+            .page-title {
+                font-size: 1.3rem;
+            }
+            
+            .confetti {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay loop muted id="background-video">
+        <source src="bgvideo24.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- Video Overlay -->
+    <div class="video-overlay"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="LOGO FOR VIDHIVIDHAN.png" alt="Vidhi Vidhan Logo" style="width: 40px; height: auto;">
+                VIDHI VIDHAN
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <h1 class="page-title">Payment Confirmation</h1>
+        
+        <!-- Animated Checkmark -->
+        <div class="checkmark-container">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+        </div>
+        
+        <h4 class="text-center mb-4">Your Payment Receipt</h4>
+
+        <!-- Payment Details Table -->
+        <table class="receipt-table">
+            <tr><th>Selected Service</th><td id="selected-service"></td></tr>
+            <tr><th>Name</th><td id="payment-name"></td></tr>
+            <tr><th>Package</th><td id="payment-package"></td></tr>
+            <tr><th>Payment Method</th><td id="payment-method"></td></tr>
+            <tr><th>Address</th><td id="payment-address"></td></tr>
+            <tr><th>Phone Number</th><td id="payment-phone"></td></tr>
+            <tr><th>Date</th><td id="payment-date"></td></tr>
+            <tr><th>Time</th><td id="payment-time"></td></tr>
+            <tr><th>Transaction ID</th><td id="transaction-id"></td></tr>
+            <tr><th>Pooja Date</th><td id="pooja-date"></td></tr>
+            <tr><th>Pooja Time</th><td id="pooja-time"></td></tr>
+            <tr><th>Email</th><td id="email-id"></td></tr>
+        </table>
+
+        <!-- Confirmation Message -->
+        <div class="confirmation-message">
+            <h4 id="booking-confirmation" class="text-center"></h4>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button onclick="sendEmailReceipt()" class="btn btn-success">
+                <i class="fas fa-envelope mr-2"></i> Email Receipt
+            </button>
+            <button onclick="downloadAndGoToHome()" class="btn btn-primary">
+                <i class="fas fa-user-circle mr-2"></i> Go to Profile
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 VIDHI VIDHAN. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        // Initialize EmailJS
+        (function(){
+            emailjs.init("JvAgK38r9lpHW4kE6");
+        })();
+        
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const colors = ['#4a6b57', '#d4a762', '#f8f1e5', '#2c3e50'];
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 15 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                
+                // Apply styles
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.background = color;
+                particle.style.left = `${posX}vw`;
+                particle.style.top = `${posY}vh`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#4a6b57', '#d4a762', '#f8f1e5', '#2c3e50', '#28a745'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                // Random properties
+                const size = Math.random() * 10 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const posX = Math.random() * window.innerWidth;
+                const delay = Math.random() * 2;
+                const duration = Math.random() * 2 + 3;
+                
+                // Apply styles
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.background = color;
+                confetti.style.left = `${posX}px`;
+                confetti.style.animationDelay = `${delay}s`;
+                confetti.style.animationDuration = `${duration}s`;
+                
+                document.body.appendChild(confetti);
+                
+                // Remove after animation completes
+                setTimeout(() => {
+                    confetti.remove();
+                }, (delay + duration) * 1000);
+            }
+        }
+
+        // Load payment details when page loads
+        window.onload = function() {
+            const paymentDetails = JSON.parse(localStorage.getItem('paymentDetails'));
+            if (paymentDetails) {
+                document.getElementById('payment-name').textContent = paymentDetails.name || 'Not provided';
+                document.getElementById('payment-address').textContent = paymentDetails.address || 'Not provided';
+                document.getElementById('payment-phone').textContent = paymentDetails.phone || 'Not provided';
+                document.getElementById('payment-method').textContent = paymentDetails.method || 'Not provided';
+                document.getElementById('payment-date').textContent = paymentDetails.date || 'Not provided';
+                document.getElementById('payment-time').textContent = paymentDetails.time || 'Not provided';
+                document.getElementById('transaction-id').textContent = paymentDetails.transactionId || 'Not provided';
+                document.getElementById('selected-service').textContent = paymentDetails.service || 'Not provided';
+                document.getElementById('payment-package').textContent = paymentDetails.packageDetails || 'Not provided';
+                document.getElementById('pooja-date').textContent = paymentDetails.poojaDate || 'Not provided';
+                document.getElementById('pooja-time').textContent = paymentDetails.poojaTime || 'Not provided';
+                document.getElementById('email-id').textContent = paymentDetails.email || 'Not provided';
+            }
+
+            document.getElementById("booking-confirmation").textContent =
+                "Your booking is confirmed. Our team will contact you shortly.";
+                
+            // Create visual effects
+            createParticles();
+            createConfetti();
+        };
+
+        // Send email receipt function
+        function sendEmailReceipt() {
+            const paymentDetails = JSON.parse(localStorage.getItem('paymentDetails'));
+            if (!paymentDetails) {
+                alert("No payment details found.");
+                return;
+            }
+
+            // Generate PDF first
+            const receiptPdfUrl = generateAndUploadPDF(paymentDetails);
+
+            const templateParams = {
+                to_name: paymentDetails.name,
+                service: paymentDetails.service,
+                package: paymentDetails.packageDetails,
+                method: paymentDetails.method,
+                address: paymentDetails.address,
+                phone: paymentDetails.phone,
+                date: paymentDetails.date,
+                transaction_id: paymentDetails.transactionId,
+                pooja_date: paymentDetails.poojaDate,
+                pooja_time: paymentDetails.poojaTime,
+                receipt_pdf: receiptPdfUrl,
+            };
+
+            emailjs.send("service_tbrrhbl", "template_rselqm7", templateParams)
+                .then(
+                    function(response) {
+                        alert("Email receipt sent successfully to " + paymentDetails.email);
+                    },
+                    function(error) {
+                        alert("Error sending email receipt. Please try again later.");
+                        console.error("EmailJS error:", error);
+                    }
+                );
+        }
+
+        // Download PDF and redirect to profile
+        function downloadAndGoToHome() {
+            const paymentDetails = JSON.parse(localStorage.getItem('paymentDetails'));
+
+            if (!paymentDetails) {
+                alert("No payment details found.");
+                return;
+            }
+
+            // Download the PDF
+            downloadReceiptAsPDF(paymentDetails);
+
+            // Create confetti effect
+            createConfetti();
+
+            // Redirect to profile after a short delay
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 1000);
+        }
+
+        // Generate PDF receipt
+        function downloadReceiptAsPDF(details) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Set document properties
+            doc.setProperties({
+                title: 'VidhiVidhan Payment Receipt',
+                subject: 'Payment Confirmation',
+                author: 'VidhiVidhan',
+                keywords: 'receipt, payment, pooja',
+                creator: 'VidhiVidhan'
+            });
+
+            // Add logo (if available)
+            // doc.addImage(logoData, 'JPEG', 10, 10, 50, 20);
+
+            // Title
+            doc.setFontSize(18);
+            doc.setTextColor(74, 107, 87); // Primary color
+            doc.text('VIDHI VIDHAN', 105, 20, { align: 'center' });
+            doc.setFontSize(14);
+            doc.text('Payment Receipt', 105, 30, { align: 'center' });
+
+            // Divider line
+            doc.setDrawColor(212, 167, 98); // Accent color
+            doc.setLineWidth(0.5);
+            doc.line(20, 35, 190, 35);
+
+            // Customer details
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0); // Black
+            doc.text(`Customer Name: ${details.name}`, 20, 45);
+            doc.text(`Transaction ID: ${details.transactionId}`, 20, 55);
+            doc.text(`Date: ${details.date}`, 20, 65);
+            doc.text(`Time: ${details.time}`, 120, 65);
+
+            // Service details
+            doc.setFontSize(14);
+            doc.setTextColor(74, 107, 87); // Primary color
+            doc.text('Service Details', 20, 80);
+
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0); // Black
+            doc.text(`Service: ${details.service}`, 20, 90);
+            doc.text(`Package: ${details.packageDetails}`, 20, 100);
+            doc.text(`Pooja Date: ${details.poojaDate}`, 20, 110);
+            doc.text(`Pooja Time: ${details.poojaTime}`, 120, 110);
+
+            // Payment details
+            doc.setFontSize(14);
+            doc.setTextColor(74, 107, 87); // Primary color
+            doc.text('Payment Information', 20, 130);
+
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0); // Black
+            doc.text(`Payment Method: ${details.method}`, 20, 140);
+            doc.text(`Amount: ${details.amount || 'Not specified'}`, 20, 150);
+
+            // Contact information
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100); // Gray
+            doc.text('Thank you for choosing VidhiVidhan', 105, 180, { align: 'center' });
+            doc.text('For any queries, please contact support@vidhividhan.com', 105, 185, { align: 'center' });
+            doc.text('© 2024 VidhiVidhan. All rights reserved.', 105, 190, { align: 'center' });
+
+            // Save the PDF
+            doc.save(`VidhiVidhan_Receipt_${details.transactionId}.pdf`);
+        }
+
+        // Generate and upload PDF (simulated)
+        function generateAndUploadPDF(details) {
+            // In a real implementation, you would upload the PDF to your server
+            // and return the URL. For demo purposes, we'll return a placeholder.
+            return "https://vidhividhan.com/receipts/" + details.transactionId + ".pdf";
+        }
+    </script>
+</body>
+</html>

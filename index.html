@@ -1,0 +1,2890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Book your pooja ceremonies online with expert Pandits. Explore services like Ganesh Pooja, Lakshmi Pooja, and more.">
+    <meta name="keywords" content="Online Pooja Booking, Ganesh Pooja, Lakshmi Pooja, Pandit Services">
+    <title>VIDHI VIDHAN</title>
+
+    <!-- Preload important resources -->
+    <link rel="preload" href="bgvideo24.mp4" as="video">
+    <link rel="preload" href="LOGO FOR VIDHIVIDHAN.png" as="image">
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "JvAgK38r9lpHW4kE6",
+            });
+        })();
+    </script>
+    
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #FF6B35; /* Warm orange - spiritual and inviting */
+            --secondary-color: #2F4858; /* Deep blue - trustworthy and stable */
+            --accent-color: #F9A826; /* Golden yellow - prosperity and divinity */
+            --light-bg: #F8F5F0; /* Soft off-white - clean and pure */
+            --text-color: #333333;
+            --text-light: #777777;
+            --success-color: #4CAF50;
+            --error-color: #f44336;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 14px;
+            }
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            perspective: 1000px;
+        }
+
+        /* 3D Effects and Animations */
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .rotate-3d {
+            transform-style: preserve-3d;
+            transition: transform 1s ease;
+        }
+
+        .rotate-3d:hover {
+            transform: rotateY(15deg) rotateX(5deg);
+        }
+
+        .parallax-container {
+            perspective: 1px;
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .parallax-back {
+            transform: translateZ(-1px) scale(2);
+        }
+
+        .parallax-base {
+            transform: translateZ(0);
+        }
+
+        .parallax-fore {
+            transform: translateZ(1px) scale(0.5);
+        }
+
+        .glow-effect {
+            position: relative;
+        }
+
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            box-shadow: 0 0 20px 10px rgba(249, 168, 38, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .glow-effect:hover::after {
+            opacity: 1;
+        }
+
+        .particle-network {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        @keyframes particle-move {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(var(--move-y)) translateX(var(--move-x));
+                opacity: 0;
+            }
+        }
+
+        .text-3d {
+            text-shadow: 
+                0 1px 0 #ccc, 
+                0 2px 0 #c9c9c9, 
+                0 3px 0 #bbb, 
+                0 4px 0 #b9b9b9, 
+                0 5px 0 #aaa, 
+                0 6px 1px rgba(0,0,0,.1), 
+                0 0 5px rgba(0,0,0,.1), 
+                0 1px 3px rgba(0,0,0,.3), 
+                0 3px 5px rgba(0,0,0,.2), 
+                0 5px 10px rgba(0,0,0,.25), 
+                0 10px 10px rgba(0,0,0,.2), 
+                0 20px 20px rgba(0,0,0,.15);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--secondary-color);
+            padding: 15px 0;
+            position: relative;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .navbar-toggler {
+            display: none;
+            font-size: 24px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Dashboard Button */
+        .dashboard-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+            transform-style: preserve-3d;
+        }
+
+        .dashboard-btn:hover {
+            transform: translateY(-3px) rotateX(10deg);
+            box-shadow: 0 6px 15px rgba(255, 107, 53, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            margin-top: 10px;
+            padding: 10px 0;
+            overflow: hidden;
+            background: white;
+            transform: translateZ(20px);
+            transform-style: preserve-3d;
+        }
+
+        .dropdown-menu .dropdown-item {
+            padding: 10px 20px;
+            color: var(--text-color);
+            font-size: 14px;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown-menu .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu .dropdown-item:hover {
+            background-color: rgba(255, 107, 53, 0.1);
+            color: var(--primary-color);
+            padding-left: 25px;
+            transform: translateX(5px);
+        }
+
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .navbar-toggler {
+                display: block;
+            }
+
+            .navbar-nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background-color: var(--secondary-color);
+                width: 100%;
+                padding: 20px;
+                gap: 15px;
+                border-top: 2px solid var(--primary-color);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+            }
+
+            .navbar-nav.show {
+                display: flex;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 1.1rem;
+                padding: 10px 0;
+            }
+
+            .navbar-nav .nav-link::after {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            text-align: center;
+            color: #fff;
+            padding: 100px 20px;
+            background-image: url('background-image.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(47, 72, 88, 0.85), rgba(47, 72, 88, 0.7));
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease;
+            color: white;
+            transform-style: preserve-3d;
+            transform: translateZ(20px);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease 0.3s both;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            transform-style: preserve-3d;
+            transform: translateZ(10px);
+        }
+
+        .hero-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: #fff;
+            font-size: 1.1rem;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            animation: fadeIn 1s ease 0.6s both;
+            font-weight: 500;
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .hero-btn:hover::before {
+            left: 100%;
+        }
+
+        .hero-btn.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-5px) translateZ(10px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .hero-btn.secondary:hover {
+            background: white;
+            color: var(--secondary-color);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) translateZ(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) translateZ(20px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) translateZ(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) translateZ(10px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateZ(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateZ(10px);
+            }
+        }
+
+        /* Services Section */
+        .section {
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 20px;
+            transform-style: preserve-3d;
+            transform: translateZ(10px);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+        }
+
+        .service-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        /* Service Card Styling */
+        .service-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            width: 350px;
+            transition: var(--transition);
+            transform-style: preserve-3d;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+            position: relative;
+        }
+
+        .service-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .service-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .service-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) rotateY(5deg) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-img-container {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.15);
+        }
+
+        .service-content {
+            padding: 30px;
+            text-align: center;
+            transform-style: preserve-3d;
+        }
+
+        .service-title {
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-description {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .service-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+            transform-style: preserve-3d;
+        }
+
+        .service-btn:hover {
+            transform: translateY(-3px) translateZ(5px);
+            box-shadow: 0 6px 15px rgba(255, 107, 53, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Pandit Details Section */
+        #pandit-details {
+            background: linear-gradient(135deg, var(--secondary-color), #1e2e3a);
+            color: white;
+        }
+
+        #pandit-details .section-title {
+            color: white;
+        }
+
+        #pandit-details .section-title::after {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+
+        .pandit-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pandit-card {
+            display: flex;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+        }
+
+        .pandit-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .pandit-info {
+            flex: 1;
+            padding: 40px;
+            transform-style: preserve-3d;
+        }
+
+        .pandit-name {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: white;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .pandit-name::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .pandit-specialization {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .pandit-experience {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .pandit-bio {
+            margin-bottom: 30px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .pandit-photo {
+            width: 350px;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .pandit-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .pandit-card:hover .pandit-photo img {
+            transform: scale(1.08) translateZ(10px);
+        }
+
+        /* Upcoming Services Section */
+        #upcoming-services {
+            background: linear-gradient(135deg, #f8f5f0, #e8e2d6);
+        }
+
+        #upcoming-services .section-title {
+            color: var(--secondary-color);
+        }
+
+        #upcoming-services .section-title::after {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+
+        .upcoming-service-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .upcoming-service-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            width: 250px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            transform-style: preserve-3d;
+        }
+
+        .upcoming-service-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .upcoming-service-img {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .upcoming-service-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .upcoming-service-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .upcoming-service-content {
+            padding: 25px 20px;
+        }
+
+        .upcoming-service-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .coming-soon {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Inquiry Form Section */
+        #inquiry-form-section {
+            background-color: var(--light-bg);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            padding: 50px;
+            transition: var(--transition);
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .form-container:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: #f9f9f9;
+            font-family: 'Poppins', sans-serif;
+            transform-style: preserve-3d;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+            outline: none;
+            background-color: white;
+            transform: translateZ(5px);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            font-size: 1rem;
+            width: 100%;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) translateZ(5px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: none;
+            font-weight: 500;
+        }
+
+        .alert-success {
+            background-color: #edfbf0;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+
+        .alert-error {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+
+        /* Customer Reviews Section */
+        #customer-reviews {
+            background: linear-gradient(135deg, #f8f5f0, #e8e2d6);
+        }
+
+        .review-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .review-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 35px;
+            width: 300px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 6rem;
+            color: rgba(255, 107, 53, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .review-text {
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .rating {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Chatbot Styling */
+        .chatbot {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 380px;
+            max-height: 500px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: var(--transition);
+            background: white;
+            transform-style: preserve-3d;
+        }
+
+        .chatbot.active {
+            display: flex;
+            transform: translateY(0) translateZ(20px);
+            opacity: 1;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--secondary-color), #1e2e3a);
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chatbot-title i {
+            color: var(--accent-color);
+        }
+
+        .close-chatbot-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            padding: 5px;
+        }
+
+        .close-chatbot-btn:hover {
+            transform: rotate(90deg);
+            color: var(--accent-color);
+        }
+
+        .chat-window {
+            padding: 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+            max-height: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background-color: #f9f9f9;
+        }
+
+        .chat-message {
+            max-width: 80%;
+            padding: 15px 20px;
+            border-radius: 20px;
+            word-wrap: break-word;
+            animation: messageIn 0.3s ease forwards;
+            position: relative;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes messageIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px) translateZ(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) translateZ(10px);
+            }
+        }
+
+        .bot-message {
+            background-color: white;
+            align-self: flex-start;
+            border-top-left-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            color: var(--text-color);
+            border: 1px solid #f0f0f0;
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            align-self: flex-end;
+            border-top-right-radius: 5px;
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 12px 18px;
+            background-color: white;
+            border-radius: 20px;
+            align-self: flex-start;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            width: fit-content;
+            border: 1px solid #f0f0f0;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ccc;
+            border-radius: 50%;
+            animation: typingAnimation 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingAnimation {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                background-color: #ccc;
+            }
+            30% {
+                transform: translateY(-5px);
+                background-color: #999;
+            }
+        }
+
+        .chat-input-container {
+            display: flex;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            background-color: white;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+        }
+
+        .send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .send-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Chatbot Toggle Button */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transform-style: preserve-3d;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.5);
+        }
+
+        .chatbot-toggle i {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .chatbot-toggle.active i {
+            transform: rotate(360deg);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--secondary-color), #1e2e3a);
+            color: white;
+            padding: 70px 20px 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo img {
+            width: 60px;
+            height: auto;
+        }
+
+        .footer-logo span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.05rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-contact {
+            margin-top: 25px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .footer-contact a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-contact a:hover {
+            color: white;
+            text-decoration: underline;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: var(--transition);
+            transform-style: preserve-3d;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px) rotate(10deg);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Social Media Float */
+        .social-float {
+            position: fixed;
+            bottom: 120px;
+            left: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 998;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .social-icon::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .social-icon:hover::after {
+            opacity: 1;
+        }
+
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 110px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 997;
+            text-decoration: none;
+            transform-style: preserve-3d;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        /* Location Detection Banner - Updated */
+        .location-banner {
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 12px 15px;
+            border-radius: 12px;
+            z-index: 9999;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            max-width: 280px;
+            min-width: 250px;
+        }
+
+        .location-banner.show {
+            transform: translateX(0) translateZ(10px);
+        }
+
+        .location-banner p {
+            margin: 0 0 10px 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: left;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            line-height: 1.4;
+        }
+
+        .location-banner .location-icon {
+            margin-right: 8px;
+            font-size: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        .location-banner .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .location-banner .close-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        /* Location Options */
+        .location-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .location-option {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            font-weight: 500;
+            flex: 1;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .location-option:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .location-option.active {
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Location Toggle Button */
+        .location-toggle {
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9998;
+            transform-style: preserve-3d;
+        }
+
+        .location-toggle:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .location-toggle i {
+            font-size: 1.3rem;
+        }
+
+        /* Location Detection Indicator */
+        .location-indicator {
+            position: fixed;
+            top: 80px;
+            left: 85px;
+            background: linear-gradient(135deg, var(--success-color), #43a047);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 9997;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        .location-indicator.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .location-indicator i {
+            font-size: 0.9rem;
+        }
+
+        /* Particle Effects */
+        .particle-network {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        @keyframes particle-move {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(var(--move-y)) translateX(var(--move-x));
+                opacity: 0;
+            }
+        }
+
+        /* 3D Text Effect */
+        .text-3d {
+            text-shadow: 
+                0 1px 0 #ccc, 
+                0 2px 0 #c9c9c9, 
+                0 3px 0 #bbb, 
+                0 4px 0 #b9b9b9, 
+                0 5px 0 #aaa, 
+                0 6px 1px rgba(0,0,0,.1), 
+                0 0 5px rgba(0,0,0,.1), 
+                0 1px 3px rgba(0,0,0,.3), 
+                0 3px 5px rgba(0,0,0,.2), 
+                0 5px 10px rgba(0,0,0,.25), 
+                0 10px 10px rgba(0,0,0,.2), 
+                0 20px 20px rgba(0,0,0,.15);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 1200px) {
+            .pandit-card {
+                flex-direction: column;
+            }
+
+            .pandit-photo {
+                width: 100%;
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .service-card,
+            .upcoming-service-card,
+            .review-card {
+                width: calc(50% - 20px);
+            }
+            
+            .section {
+                padding: 80px 20px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-btn {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 70px 20px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 50px;
+            }
+
+            .service-container,
+            .upcoming-service-container,
+            .review-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-card,
+            .upcoming-service-card,
+            .review-card {
+                width: 100%;
+                max-width: 450px;
+            }
+
+            .form-container {
+                padding: 35px 25px;
+            }
+
+            .chatbot {
+                width: 90%;
+                right: 5%;
+                bottom: 20px;
+            }
+
+            .chatbot-toggle {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .social-float {
+                bottom: 100px;
+                left: 20px;
+                gap: 12px;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 90px;
+            }
+
+            .location-banner {
+                top: 70px;
+                left: 15px;
+                max-width: 260px;
+                min-width: 230px;
+            }
+            
+            .location-toggle {
+                top: 70px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .location-toggle i {
+                font-size: 1.2rem;
+            }
+            
+            .location-indicator {
+                top: 70px;
+                left: 75px;
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+            
+            .location-banner p {
+                font-size: 0.9rem;
+            }
+            
+            .location-option {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .pandit-info {
+                padding: 30px 25px;
+            }
+            
+            .pandit-name {
+                font-size: 1.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-section {
+                padding: 80px 20px;
+                min-height: 80vh;
+            }
+
+            .section {
+                padding: 60px 15px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                padding-bottom: 15px;
+            }
+            
+            .section-title::after {
+                width: 80px;
+                height: 4px;
+            }
+
+            .pandit-info {
+                padding: 25px 20px;
+            }
+
+            .pandit-name {
+                font-size: 1.7rem;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
+            
+            .footer-logo span {
+                font-size: 1.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .chatbot {
+                max-height: 70vh;
+                border-radius: 15px;
+            }
+            
+            .hero-btn {
+                display: block;
+                margin: 15px auto;
+                width: 80%;
+            }
+            
+            .location-banner {
+                top: 65px;
+                left: 10px;
+                max-width: 240px;
+                min-width: 220px;
+                padding: 10px 12px;
+            }
+            
+            .location-banner p {
+                font-size: 0.85rem;
+            }
+            
+            .location-banner .location-icon {
+                font-size: 0.9rem;
+                margin-right: 6px;
+            }
+            
+            .location-option {
+                padding: 4px 8px;
+                font-size: 0.75rem;
+                min-width: 60px;
+            }
+            
+            .location-toggle {
+                top: 65px;
+                left: 10px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .location-toggle i {
+                font-size: 1rem;
+            }
+            
+            .location-indicator {
+                top: 65px;
+                left: 60px;
+                font-size: 0.7rem;
+                padding: 5px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Particle Network for Background Effects -->
+    <div class="particle-network" id="particleNetwork"></div>
+
+    <!-- Location Detection Banner -->
+    <button id="locationToggle" class="location-toggle floating">
+        <i class="fas fa-map-marker-alt"></i>
+    </button>
+    
+    <div id="locationIndicator" class="location-indicator">
+        <i class="fas fa-check-circle"></i>
+        <span id="locationIndicatorText">Location Detected</span>
+    </div>
+    
+    <div id="locationBanner" class="location-banner">
+        <button id="closeLocationBanner" class="close-btn">
+            <i class="fas fa-times"></i>
+        </button>
+        <p><i class="fas fa-map-marker-alt location-icon"></i> <span id="locationMessage">We've detected you're in <span id="detectedLocation">Navsari</span>. Showing local pandits and services.</span></p>
+        <div class="location-options">
+            <button class="location-option" data-location="Navsari">Navsari</button>
+            <button class="location-option" data-location="Surat">Surat</button>
+            <button class="location-option" data-location="Valsad">Valsad</button>
+            <button class="location-option" data-location="Vapi">Vapi</button>
+            <button class="location-option" data-location="Bilimora">Bilimora</button>
+        </div>
+    </div>
+
+    <header>
+        <video autoplay muted loop id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+            <source src="bgvideo24.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="LOGO FOR VIDHIVIDHAN.png" alt="Vidhi Vidhan Logo"> VIDHI VIDHAN
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link rounded-circle dashboard-btn" href="#" id="dashboardDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dashboard
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dashboardDropdown">
+                            <a class="dropdown-item" href="login.html">Login</a>
+                            <a class="dropdown-item" href="logout.html">Logout</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="packages.html">Packages</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="BookNow.html">Book Now</a></li>
+                    <li class="nav-item"><a class="nav-link" href="payment.html">Payment</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Toggle Sound Button -->
+        <button id="soundToggleButton" onclick="toggleSound()" style="position: absolute; z-index: 2; top: 20px; right: 20px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 50px; box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);">
+            <i class="fas fa-volume-mute" id="soundIcon"></i>
+        </button>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title text-3d">Welcome to Online Pooja Booking</h1>
+            <p class="hero-subtitle">Book your pooja ceremonies from the comfort of your home</p>
+            <button onclick="navigateToServicesAndPackages()" class="hero-btn floating">Instant Booking</button>
+            <button onclick="navigateToBooklet()" class="hero-btn secondary floating">How to Book</button>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <h2 class="section-title text-3d">Our Services</h2>
+        <div class="service-container">
+            <div class="service-card rotate-3d">
+                <div class="service-img-container">
+                    <img src="ganesh.jpg" alt="Ganesh Pooja">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Ganesh Pooja</h3>
+                    <p class="service-description">A traditional pooja for prosperity and success, removing obstacles and bringing new beginnings.</p>
+                    <a href="BookNow.html" class="service-btn glow-effect">Book Now</a>
+                </div>
+            </div>
+            <div class="service-card rotate-3d">
+                <div class="service-img-container">
+                    <img src="laxmi.jpg" alt="Lakshmi Pooja">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Lakshmi Pooja</h3>
+                    <p class="service-description">Invoke the blessings of Goddess Lakshmi for wealth, prosperity and abundance in your home.</p>
+                    <a href="BookNow.html" class="service-btn glow-effect">Book Now</a>
+                </div>
+            </div>
+            <div class="service-card rotate-3d">
+                <div class="service-img-container">
+                    <img src="navratri.jpg" alt="Navratri Pooja">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Navratri Pooja</h3>
+                    <p class="service-description">Celebrate the nine divine nights with traditional rituals honoring Goddess Durga.</p>
+                    <a href="BookNow.html" class="service-btn glow-effect">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pandit-details" class="section">
+        <h2 class="section-title text-3d">Our Expert Pandits</h2>
+        <div class="pandit-container">
+            <div class="pandit-card rotate-3d">
+                <div class="pandit-info">
+                    <h2 class="pandit-name">Pandit Ravi Shankar</h2>
+                    <p class="pandit-specialization"><strong>Specialization:</strong> Vedic Rituals, Astrology, Puja Services</p>
+                    <p class="pandit-experience"><strong>Experience:</strong> 15+ Years</p>
+                    <p class="pandit-bio">Pandit Ravi Shankar is a well-respected priest in the community known for his deep knowledge of Vedic rituals and astrology. With over 15 years of experience, he has helped countless individuals with their spiritual journeys.</p>
+                    <a href="BookNow.html" class="service-btn glow-effect">Book Pandit</a>
+                </div>
+                <div class="pandit-photo">
+                    <img src="pandit21.jpg" alt="Pandit Ravi Shankar">
+                </div>
+            </div>
+
+            <div class="pandit-card rotate-3d">
+                <div class="pandit-info">
+                    <h2 class="pandit-name">Pandit Vikram</h2>
+                    <p class="pandit-specialization"><strong>Specialization:</strong> Vedic Rituals, Marriage Ceremonies, Pujas</p>
+                    <p class="pandit-experience"><strong>Experience:</strong> 10+ Years</p>
+                    <p class="pandit-bio">Pandit Vikram is known for his ability to perform traditional and highly personalized marriage ceremonies. He has worked with numerous families, ensuring that sacred rituals are executed with precision.</p>
+                    <a href="BookNow.html" class="service-btn glow-effect">Book Pandit</a>
+                </div>
+                <div class="pandit-photo">
+                    <img src="pandit22.jpg" alt="Pandit Vikram">
+                </div>
+            </div>
+
+            <div class="pandit-card rotate-3d">
+                <div class="pandit-info">
+                    <h2 class="pandit-name">Pandit Rajesh</h2>
+                    <p class="pandit-specialization"><strong>Specialization:</strong> Birth Pujas, Astrology, Karma Remedies</p>
+                    <p class="pandit-experience"><strong>Experience:</strong> 20+ Years</p>
+                    <p class="pandit-bio">Pandit Rajesh is a renowned astrologer and spiritual guide with over 20 years of experience, offering astrology consultations and performing powerful birth pujas to remove obstacles and bring prosperity.</p>
+                    <a href="BookNow.html" class="service-btn glow-effect">Book Pandit</a>
+                </div>
+                <div class="pandit-photo">
+                    <img src="pandit23.jpg" alt="Pandit Rajesh">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="upcoming-services" class="section">
+        <h2 class="section-title text-3d">Coming Soon</h2>
+        <div class="upcoming-service-container">
+            <div class="upcoming-service-card rotate-3d">
+                <div class="upcoming-service-img">
+                    <img src="vedic.jpg" alt="Vedic Rituals">
+                </div>
+                <div class="upcoming-service-content">
+                    <h3 class="upcoming-service-title">Vedic Rituals</h3>
+                    <p class="coming-soon">Coming Soon!</p>
+                </div>
+            </div>
+            <div class="upcoming-service-card rotate-3d">
+                <div class="upcoming-service-img">
+                    <img src="astrology.jpg" alt="Astrology">
+                </div>
+                <div class="upcoming-service-content">
+                    <h3 class="upcoming-service-title">Astrology</h3>
+                    <p class="coming-soon">Coming Soon!</p>
+                </div>
+            </div>
+            <div class="upcoming-service-card rotate-3d">
+                <div class="upcoming-service-img">
+                    <img src="marriage.jpg" alt="Marriage Ceremonies">
+                </div>
+                <div class="upcoming-service-content">
+                    <h3 class="upcoming-service-title">Marriage Ceremonies</h3>
+                    <p class="coming-soon">Coming Soon!</p>
+                </div>
+            </div>
+            <div class="upcoming-service-card rotate-3d">
+                <div class="upcoming-service-img">
+                    <img src="brith pujas.jpg" alt="Birth Pujas">
+                </div>
+                <div class="upcoming-service-content">
+                    <h3 class="upcoming-service-title">Birth Pujas</h3>
+                    <p class="coming-soon">Coming Soon!</p>
+                </div>
+            </div>
+            <div class="upcoming-service-card rotate-3d">
+                <div class="upcoming-service-img">
+                    <img src="karma.jpg" alt="Karma Remedies"> 
+                </div>
+                <div class="upcoming-service-content">
+                    <h3 class="upcoming-service-title">Karma Remedies</h3>
+                    <p class="coming-soon">Coming Soon!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="inquiry-form-section" class="section">
+        <h2 class="section-title text-3d">Have Questions?</h2>
+        <div class="form-container rotate-3d">
+            <div id="alert-message" class="alert" style="display: none;"></div>
+            <form id="inquiry-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email address">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" required placeholder="Enter your 10-digit phone number">
+                </div>
+                <div class="form-group">
+                    <label for="inquiry-message">Your Message</label>
+                    <textarea id="inquiry-message" name="inquiry-message" class="form-control" required placeholder="Enter your questions or special requests"></textarea>
+                </div>
+                <button type="button" onclick="validateAndSendMail()" class="submit-btn pulse">
+                    <span id="submit-text">Submit Inquiry</span>
+                    <span id="submit-loading" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i> Sending...
+                    </span>
+                </button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="customer-reviews" class="section">
+        <h2 class="section-title text-3d">What Our Customers Say</h2>
+        <div class="review-container">
+            <div class="review-card rotate-3d">
+                <p class="review-text">"The pooja was conducted beautifully. Pandit Ravi Shankar was very knowledgeable and made the ceremony very meaningful. I highly recommend this service!"</p>
+                <h4 class="reviewer-name">Rajesh Kumar</h4>
+                <div class="rating">
+                    <span>⭐⭐⭐⭐⭐</span>
+                </div>
+            </div>
+            <div class="review-card rotate-3d">
+                <p class="review-text">"A wonderful experience! Booking was easy, and the pandit was very professional. The ceremony was smooth and calming. Thank you for such great service!"</p>
+                <h4 class="reviewer-name">Priya Sharma</h4>
+                <div class="rating">
+                    <span>⭐⭐⭐⭐⭐</span>
+                </div>
+            </div>
+            <div class="review-card rotate-3d">
+                <p class="review-text">"I was looking for a traditional pooja ceremony, and I found it here. Pandit Vikram was outstanding. The entire process was hassle-free, and the experience was divine!"</p>
+                <h4 class="reviewer-name">Sanjay Gupta</h4>
+                <div class="rating">
+                    <span>⭐⭐⭐⭐⭐</span>
+                </div>
+            </div>
+            <div class="review-card rotate-3d">
+                <p class="review-text">"Excellent service and a seamless experience. The online booking system made everything so convenient. Highly recommend Vidhi Vidhan for all your pooja needs!"</p>
+                <h4 class="reviewer-name">Avinash Mishra</h4>
+                <div class="rating">
+                    <span>⭐⭐⭐⭐⭐</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Chatbot Interface -->
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i> Vidhi Vidhan Assistant
+            </div>
+            <button id="closeChatbot" class="close-chatbot-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="chat-window" class="chat-window">
+            <div class="chat-message bot-message">
+                <p>Namaste! 🙏 I'm your Vidhi Vidhan assistant. How can I help you with your pooja booking today?</p>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="user-input" class="chat-input" placeholder="Type your message here..." />
+            <button id="send-message" class="send-btn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbotToggle" class="chatbot-toggle floating">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Social Media Float -->
+    <div class="social-float">
+        <a href="https://wa.me/9265247107" class="social-icon floating" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+        <a href="https://www.instagram.com/vidhividhan_/" class="social-icon floating" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1024px-Instagram_logo_2022.svg.png" alt="Instagram">
+        </a>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top floating">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="LOGO FOR VIDHIVIDHAN.png" alt="Vidhi Vidhan Logo">
+                <span>VIDHI VIDHAN</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="packages.html">Packages</a>
+                <a href="BookNow.html">Book Now</a>
+                <a href="payment.html">Payment</a>
+                <a href="privacypolicy.html">Privacy Policy</a>
+                <a href="teramofservices.html">Terms of Service</a>
+            </div>
+            <div class="footer-contact">
+                <p><i class="fas fa-phone-alt"></i> <a href="tel:+919265247107">+91 9265247107</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@vidhividhan.com">info@vidhividhan.com</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Navsari, India</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/vidhividhan" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/vidhividhan_/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/vidhividhan" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://wa.me/9265247107" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Vidhi Vidhan. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functions
+        function navigateToServicesAndPackages() {
+            window.location.href = "services.html";
+        }
+
+        function navigateToBooklet() {
+            window.location.href = "booklet.html";
+        }
+
+        // Sound toggle function
+        function toggleSound() {
+            var video = document.getElementById('background-video');
+            var icon = document.getElementById('soundIcon');
+
+            if (video.muted) {
+                video.muted = false;
+                icon.classList.remove('fa-volume-mute');
+                icon.classList.add('fa-volume-up');
+            } else {
+                video.muted = true;
+                icon.classList.remove('fa-volume-up');
+                icon.classList.add('fa-volume-mute');
+            }
+        }
+
+        // Form validation and email sending
+        function validateForm() {
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const message = document.getElementById("inquiry-message").value.trim();
+            const alertBox = document.getElementById("alert-message");
+            
+            // Reset alert
+            alertBox.style.display = "none";
+            alertBox.className = "alert";
+            alertBox.innerHTML = "";
+            
+            // Validate fields
+            if (!name || !email || !phone || !message) {
+                showAlert("Please fill all required fields", "error");
+                return false;
+            }
+            
+            if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                showAlert("Please enter a valid email address", "error");
+                return false;
+            }
+            
+            if (!/^[0-9]{10}$/.test(phone)) {
+                showAlert("Please enter a valid 10-digit phone number", "error");
+                return false;
+            }
+            
+            return true;
+        }
+
+        function showAlert(message, type) {
+            const alertBox = document.getElementById("alert-message");
+            alertBox.style.display = "block";
+            alertBox.classList.add(`alert-${type}`);
+            alertBox.innerHTML = message;
+            
+            // Scroll to alert
+            alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function sendMail() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const message = document.getElementById("inquiry-message").value;
+            
+            // Show loading state
+            document.getElementById("submit-text").style.display = "none";
+            document.getElementById("submit-loading").style.display = "inline";
+            
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                phone: phone,
+                message: message,
+            };
+
+            emailjs.send("service_tbrrhbl", "template_2s5bmjy", templateParams)
+                .then(function(response) {
+                    console.log("Email sent successfully!", response.status, response.text);
+                    showAlert("Thank you for your inquiry! We will get back to you shortly.", "success");
+                    document.getElementById("inquiry-form").reset();
+                    
+                    // Reset button
+                    document.getElementById("submit-text").style.display = "inline";
+                    document.getElementById("submit-loading").style.display = "none";
+                }, function(error) {
+                    console.error("Failed to send email.", error);
+                    showAlert("Failed to send your message. Please try again later.", "error");
+                    
+                    // Reset button
+                    document.getElementById("submit-text").style.display = "inline";
+                    document.getElementById("submit-loading").style.display = "none";
+                });
+        }
+
+        function validateAndSendMail() {
+            if (validateForm()) {
+                sendMail();
+            }
+        }
+
+        // Chatbot functionality
+        const chatbotResponses = {
+            "hello": "Namaste! 🙏 How can I assist you with your pooja booking today?",
+            "hi": "Namaste! 🙏 How can I help you?",
+            "services": "We offer various pooja services including:<br>- Ganesh Pooja<br>- Lakshmi Pooja<br>- Navratri Pooja<br>- Marriage Ceremonies<br>- Birth Pujas<br>You can find more details on our Services page.",
+            "booking": "You can book a pooja in 3 easy steps:<br>1. Visit our Book Now page<br>2. Select your preferred service<br>3. Choose a date and make payment<br>Or you can call us directly at +91 9265247107",
+            "contact": "You can reach us through:<br>📞 Phone: +91 9265247107<br>📧 Email: info@vidhividhan.com<br>📍 Location:  Navsari, India",
+            "pandit": "We have experienced pandits specializing in various rituals. Our pandits have 10-20 years of experience in:<br>- Vedic rituals<br>- Marriage ceremonies<br>- Astrology consultations<br>- Birth pujas<br>Check our Pandit Details section to know more.",
+            "price": "Pooja prices vary depending on the type and complexity. Our basic packages start from ₹1500. For detailed pricing, please visit our Packages page or contact us directly.",
+            "payment": "We accept various payment methods:<br>- Credit/Debit Cards<br>- Net Banking<br- UPI (PhonePe, Google Pay, etc.)<br>- Cash on Delivery (for some services)",
+            "timing": "Our customer support is available from 8 AM to 8 PM daily. Pooja timings depend on the type of ceremony and can be scheduled as per your convenience.",
+            "default": "I'm sorry, I didn't quite understand that. Could you please rephrase or ask about:<br>- Our services<br>- Booking process<br- Contact information<br>- Pricing<br>- Pandit details"
+        };
+
+        function getBotResponse(userMessage) {
+            userMessage = userMessage.toLowerCase();
+            
+            if (userMessage.includes('hello') || userMessage.includes('hi') || userMessage.includes('namaste')) {
+                return chatbotResponses.hello;
+            } else if (userMessage.includes('service') || userMessage.includes('pooja') || userMessage.includes('ritual')) {
+                return chatbotResponses.services;
+            } else if (userMessage.includes('book') || userMessage.includes('schedule') || userMessage.includes('appointment')) {
+                return chatbotResponses.booking;
+            } else if (userMessage.includes('contact') || userMessage.includes('call') || userMessage.includes('email') || userMessage.includes('reach')) {
+                return chatbotResponses.contact;
+            } else if (userMessage.includes('pandit') || userMessage.includes('priest') || userMessage.includes('astrologer')) {
+                return chatbotResponses.pandit;
+            } else if (userMessage.includes('price') || userMessage.includes('cost') || userMessage.includes('fee') || userMessage.includes('charge')) {
+                return chatbotResponses.price;
+            } else if (userMessage.includes('payment') || userMessage.includes('pay') || userMessage.includes('upi') || userMessage.includes('card')) {
+                return chatbotResponses.payment;
+            } else if (userMessage.includes('time') || userMessage.includes('timing') || userMessage.includes('duration') || userMessage.includes('hour')) {
+                return chatbotResponses.timing;
+            } else {
+                return chatbotResponses.default;
+            }
+        }
+
+        // Chatbot UI interactions
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const closeChatbotBtn = document.getElementById('closeChatbot');
+        const chatbot = document.getElementById('chatbot');
+        const chatWindow = document.getElementById('chat-window');
+        const userInput = document.getElementById('user-input');
+        const sendMessageBtn = document.getElementById('send-message');
+
+        function addMessageToChat(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message', `${sender}-message`);
+            messageDiv.innerHTML = `<p>${message}</p>`;
+            chatWindow.appendChild(messageDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        // Toggle chatbot
+        chatbotToggle.addEventListener('click', () => {
+            chatbotToggle.classList.toggle('active');
+            chatbot.classList.toggle('active');
+            
+            if (chatbot.classList.contains('active')) {
+                userInput.focus();
+            }
+        });
+
+        // Close chatbot
+        closeChatbotBtn.addEventListener('click', () => {
+            chatbotToggle.classList.remove('active');
+            chatbot.classList.remove('active');
+        });
+
+        // Send message
+        function handleSendMessage() {
+            const message = userInput.value.trim();
+            if (message) {
+                addMessageToChat(message, 'user');
+                userInput.value = '';
+                
+                // Show typing indicator
+                const typingIndicator = document.createElement('div');
+                typingIndicator.classList.add('typing-indicator');
+                typingIndicator.innerHTML = `
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                `;
+                chatWindow.appendChild(typingIndicator);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+                
+                // Simulate delay for bot response
+                setTimeout(() => {
+                    chatWindow.removeChild(typingIndicator);
+                    const botResponse = getBotResponse(message);
+                    addMessageToChat(botResponse, 'bot');
+                }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
+            }
+        }
+
+        sendMessageBtn.addEventListener('click', handleSendMessage);
+
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleSendMessage();
+            }
+        });
+
+        // Close chatbot when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!chatbot.contains(event.target) && event.target !== chatbotToggle) {
+                chatbotToggle.classList.remove('active');
+                chatbot.classList.remove('active');
+            }
+        });
+
+        // Back to top button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Initialize video with sound muted
+        window.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('background-video');
+            video.muted = true;
+            
+            // Try to play video (may be blocked by browser autoplay policies)
+            const playPromise = video.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    // Autoplay was prevented, show mute button
+                    console.log("Autoplay prevented:", error);
+                });
+            }
+            
+            // Enable sound after first user interaction
+            const enableSound = () => {
+                video.muted = false;
+                document.removeEventListener('click', enableSound);
+                document.removeEventListener('scroll', enableSound);
+            };
+            
+            document.addEventListener('click', enableSound, { once: true });
+            document.addEventListener('scroll', enableSound, { once: true });
+        });
+
+        // Service card animations when they come into view
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Location Detection Functionality
+        const locationBanner = document.getElementById('locationBanner');
+        const locationToggle = document.getElementById('locationToggle');
+        const locationIndicator = document.getElementById('locationIndicator');
+        const locationIndicatorText = document.getElementById('locationIndicatorText');
+        const closeLocationBanner = document.getElementById('closeLocationBanner');
+        const detectedLocation = document.getElementById('detectedLocation');
+        const locationOptions = document.querySelectorAll('.location-option');
+
+        // Function to get user's location
+        function getUserLocation() {
+            // Show loading state
+            locationIndicatorText.textContent = "Detecting Location...";
+            locationIndicator.style.background = "linear-gradient(135deg, var(--primary-color), var(--accent-color))";
+            locationIndicator.classList.add('show');
+            
+            // First try HTML5 Geolocation API
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        // If we get coordinates, reverse geocode to get city name
+                        reverseGeocode(position.coords.latitude, position.coords.longitude);
+                    },
+                    (error) => {
+                        // If geolocation fails, try IP-based location
+                        console.log("Geolocation error:", error);
+                        getLocationFromIP();
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 60000
+                    }
+                );
+            } else {
+                // Browser doesn't support Geolocation, use IP-based location
+                getLocationFromIP();
+            }
+        }
+
+        // Function to reverse geocode coordinates to get city name
+        function reverseGeocode(lat, lng) {
+            // Using Nominatim (OpenStreetMap) for reverse geocoding
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
+                .then(response => response.json())
+                .then(data => {
+                    const city = data.address?.city || data.address?.town || data.address?.village;
+                    const state = data.address?.state;
+                    
+                    if (city) {
+                        showLocationBanner(city, state ? `, ${state}` : '', true);
+                        updateLocationIndicator(city, state, true);
+                    } else {
+                        // Fallback to IP-based location if city not found
+                        getLocationFromIP();
+                    }
+                })
+                .catch(error => {
+                    console.log("Reverse geocoding error:", error);
+                    getLocationFromIP();
+                });
+        }
+
+        // Function to get location from IP address
+        function getLocationFromIP() {
+            // Using ip-api.com for IP-based location
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    const city = data.city;
+                    const region = data.region;
+                    
+                    if (city) {
+                        showLocationBanner(city, region ? `, ${region}` : '', true);
+                        updateLocationIndicator(city, region, true);
+                    } else {
+                        // Final fallback to default location
+                        showLocationBanner('Navsari', ', Gujarat', false);
+                        updateLocationIndicator('Navsari', 'Gujarat', false);
+                    }
+                })
+                .catch(error => {
+                    console.log("IP location error:", error);
+                    // Final fallback to default location
+                    showLocationBanner('Navsari', ', Gujarat', false);
+                    updateLocationIndicator('Navsari', 'Gujarat', false);
+                });
+        }
+
+        // Function to update location indicator
+        function updateLocationIndicator(city, region, isAutoDetected) {
+            locationIndicatorText.textContent = isAutoDetected ? 
+                `Auto: ${city}` : 
+                `Default: ${city}`;
+            locationIndicator.style.background = isAutoDetected ? 
+                "linear-gradient(135deg, var(--success-color), #43a047)" : 
+                "linear-gradient(135deg, var(--primary-color), var(--accent-color))";
+        }
+
+        // Function to show the location banner
+        function showLocationBanner(city, region, isAutoDetected) {
+            detectedLocation.textContent = `${city}${region}`;
+            
+            // Update location message based on detection method
+            const locationMessage = document.getElementById('locationMessage');
+            if (isAutoDetected) {
+                locationMessage.innerHTML = `We've detected you're in <span id="detectedLocation">${city}${region}</span>. Showing local pandits and services.`;
+            } else {
+                locationMessage.innerHTML = `Welcome to Vidhi Vidhan! We're currently serving <span id="detectedLocation">${city}${region}</span> and nearby areas.`;
+            }
+            
+            // Highlight the active location option
+            locationOptions.forEach(option => {
+                if (option.getAttribute('data-location') === city) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+            
+            // Store location in localStorage
+            localStorage.setItem('userLocation', `${city}${region}`);
+            localStorage.setItem('lastLocationShown', new Date().getTime().toString());
+            
+            // Show banner automatically for first-time users
+            const lastShown = localStorage.getItem('lastLocationShown');
+            const now = new Date().getTime();
+            
+            if (!lastShown || (now - parseInt(lastShown)) > 24 * 60 * 60 * 1000) {
+                setTimeout(() => {
+                    locationBanner.classList.add('show');
+                }, 1500);
+            }
+        }
+
+        // Function to update location based on user selection
+        function updateLocation(selectedLocation) {
+            detectedLocation.textContent = selectedLocation;
+            
+            // Update location in localStorage
+            localStorage.setItem('userLocation', selectedLocation);
+            localStorage.setItem('lastLocationShown', new Date().getTime().toString());
+            
+            // Update location message
+            const locationMessage = document.getElementById('locationMessage');
+            locationMessage.innerHTML = `You've selected <span id="detectedLocation">${selectedLocation}</span>. Showing local pandits and services.`;
+            
+            // Highlight the active location option
+            locationOptions.forEach(option => {
+                if (option.getAttribute('data-location') === selectedLocation) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+            
+            // Update location indicator
+            locationIndicatorText.textContent = `Selected: ${selectedLocation}`;
+            locationIndicator.style.background = "linear-gradient(135deg, var(--success-color), #43a047)";
+            
+            // Show success message
+            showLocationSuccess(selectedLocation);
+        }
+
+        // Function to show location update success
+        function showLocationSuccess(location) {
+            // Create a temporary success message
+            const successMessage = document.createElement('div');
+            successMessage.style.cssText = `
+                position: fixed;
+                top: 80px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--success-color);
+                color: white;
+                padding: 10px 20px;
+                border-radius: 50px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                z-index: 10000;
+                font-weight: 500;
+                transition: all 0.3s ease;
+            `;
+            successMessage.textContent = `Location updated to ${location}!`;
+            document.body.appendChild(successMessage);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                successMessage.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(successMessage);
+                }, 300);
+            }, 3000);
+        }
+
+        // Toggle location banner
+        locationToggle.addEventListener('click', () => {
+            locationBanner.classList.toggle('show');
+        });
+
+        // Close location banner
+        closeLocationBanner.addEventListener('click', () => {
+            locationBanner.classList.remove('show');
+        });
+
+        // Add event listeners to location options
+        locationOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const selectedLocation = option.getAttribute('data-location');
+                updateLocation(selectedLocation);
+                locationBanner.classList.remove('show');
+            });
+        });
+
+        // Check if we should show location banner
+        function checkLocationBanner() {
+            const lastShown = localStorage.getItem('lastLocationShown');
+            const now = new Date().getTime();
+            
+            // Only show if not shown in the last 24 hours
+            if (!lastShown || (now - parseInt(lastShown)) > 24 * 60 * 60 * 1000) {
+                getUserLocation();
+            } else {
+                // Use stored location if available
+                const storedLocation = localStorage.getItem('userLocation');
+                if (storedLocation) {
+                    const city = storedLocation.split(',')[0].trim();
+                    detectedLocation.textContent = storedLocation;
+                    
+                    // Update location message for stored location
+                    const locationMessage = document.getElementById('locationMessage');
+                    locationMessage.innerHTML = `Welcome back! We're showing pandits and services in <span id="detectedLocation">${storedLocation}</span>.`;
+                    
+                    // Highlight the active location option
+                    locationOptions.forEach(option => {
+                        if (option.getAttribute('data-location') === city) {
+                            option.classList.add('active');
+                        } else {
+                            option.classList.remove('active');
+                        }
+                    });
+                    
+                    // Update location indicator
+                    locationIndicatorText.textContent = `Stored: ${city}`;
+                    locationIndicator.style.background = "linear-gradient(135deg, var(--success-color), #43a047)";
+                    locationIndicator.classList.add('show');
+                }
+            }
+        }
+
+        // Initialize location detection after page loads
+        setTimeout(checkLocationBanner, 1000);
+
+        // Particle Network Animation
+        function createParticleNetwork() {
+            const particleNetwork = document.getElementById('particleNetwork');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                // Random movement
+                const moveX = (Math.random() - 0.5) * 100;
+                const moveY = (Math.random() - 0.5) * 100;
+                
+                // Random size
+                const size = Math.random() * 3 + 2;
+                
+                // Random delay
+                const delay = Math.random() * 5;
+                
+                // Random duration
+                const duration = Math.random() * 10 + 10;
+                
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.setProperty('--move-x', `${moveX}px`);
+                particle.style.setProperty('--move-y', `${moveY}px`);
+                particle.style.animation = `particle-move ${duration}s linear ${delay}s infinite`;
+                
+                particleNetwork.appendChild(particle);
+            }
+        }
+
+        // Initialize particle network
+        createParticleNetwork();
+
+        // Add scroll-based 3D effects
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            // Apply parallax effect to elements
+            document.querySelectorAll('.rotate-3d').forEach((element, index) => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < window.innerHeight && elementTop > 0) {
+                    const rotationY = (elementTop / window.innerHeight) * 10;
+                    element.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationY/2}deg)`;
+                }
+            });
+        });
+
+        // Add mouse move 3D effects
+        document.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            
+            document.querySelectorAll('.floating').forEach(element => {
+                element.style.transform = `translateY(-5px) rotate(${xAxis/2}deg)`;
+            });
+            
+            document.querySelectorAll('.rotate-3d').forEach(element => {
+                const rect = element.getBoundingClientRect();
+                const elementX = rect.left + rect.width / 2;
+                const elementY = rect.top + rect.height / 2;
+                
+                const xAxisElement = (elementX - e.pageX) / 25;
+                const yAxisElement = (elementY - e.pageY) / 25;
+                
+                element.style.transform = `rotateY(${xAxisElement}deg) rotateX(${yAxisElement}deg)`;
+            });
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

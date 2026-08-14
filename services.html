@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Service | Vidhi Vidhan</title>
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --accent-dark: #d97706;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --light-bg: #f8fafc;
+            --dark-bg: #343a40;
+            --header-bg: linear-gradient(90deg, #3b3f45, #484e56);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --transition-fast: all 0.15s ease;
+            --transition-normal: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background: var(--light-bg);
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Video Background */
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--header-bg);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 10;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-fast);
+        }
+
+        .navbar-brand:hover {
+            color: var(--accent-color);
+        }
+
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+        }
+
+        .navbar-nav {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition-normal);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition-normal);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--accent-color);
+            margin: 2rem 0;
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+
+        /* Services Grid */
+        .service-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Service Card */
+        .service-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: var(--border-radius-md);
+            margin-bottom: 1rem;
+            border: 3px solid var(--primary-color);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .service-card p strong {
+            color: var(--text-color);
+        }
+
+        .service-card button {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: var(--transition-normal);
+            width: 100%;
+            margin-top: 0.75rem;
+        }
+
+        .service-card button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Button Group */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .navbar-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+
+            .nav-link {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .service-cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-brand {
+                font-size: 1.25rem;
+            }
+
+            .navbar-brand img {
+                width: 35px;
+                height: 35px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Video Background -->
+    <video autoplay loop muted id="background-video">
+        <source src="bgvideo24.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <a class="navbar-brand" href="index.html">
+                <img src="LOGO FOR VIDHIVIDHAN.png" alt="Vidhi Vidhan Logo">
+                VIDHI VIDHAN
+            </a>
+            <ul class="navbar-nav">
+                <li><a class="nav-link active" href="index.html">Home</a></li>
+                <li><a class="nav-link" href="services.html">Services</a></li>
+                <li><a class="nav-link" href="packages.html">Packages</a></li>
+                <li><a class="nav-link" href="BookNow.html">Book Now</a></li>
+                <li><a class="nav-link" href="payment.html">Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h2>Select Your Service</h2>
+        
+        <div class="service-cards-container">
+            <!-- Pandit 1 - Ravi Shankar -->
+            <div class="service-card">
+                <img src="pandit21.jpg" alt="Pandit Ravi Shankar">
+                <h3>Pandit Ravi Shankar</h3>
+                <p><strong>Specialization:</strong> Vedic Rituals, Astrology, Puja Services</p>
+                <p><strong>Services Offered:</strong> Ganesh Pooja, Lakshmi Pooja, Navratri Pooja</p>
+                <div class="button-group">
+                    <button onclick="selectService('Pandit Ravi Shankar - Ganesh Pooja')">Select Ganesh Pooja</button>
+                    <button onclick="selectService('Pandit Ravi Shankar - Lakshmi Pooja')">Select Lakshmi Pooja</button>
+                    <button onclick="selectService('Pandit Ravi Shankar - Navratri Pooja')">Select Navratri Pooja</button>
+                </div>
+            </div>
+
+            <!-- Pandit 2 - Shankar Prasad -->
+            <div class="service-card">
+                <img src="pandit22.jpg" alt="Pandit Shankar Prasad">
+                <h3>Pandit Shankar Prasad</h3>
+                <p><strong>Specialization:</strong> Marriage Ceremonies, Birthday Pujas, Custom Pujas</p>
+                <p><strong>Services Offered:</strong> Marriage Ceremony, Birthday Puja</p>
+                <div class="button-group">
+                    <button onclick="selectService('Pandit Shankar Prasad - Marriage Ceremony')">Select Marriage Ceremony</button>
+                    <button onclick="selectService('Pandit Shankar Prasad - Birthday Puja')">Select Birthday Puja</button>
+                </div>
+            </div>
+
+            <!-- Pandit 3 - Narendra Mishra -->
+            <div class="service-card">
+                <img src="pandit23.jpg" alt="Pandit Narendra Mishra">
+                <h3>Pandit Narendra Mishra</h3>
+                <p><strong>Specialization:</strong> Vedic Pujas, Astrology, Navagraha Pooja</p>
+                <p><strong>Services Offered:</strong> Vedic Puja, Navagraha Pooja</p>
+                <div class="button-group">
+                    <button onclick="selectService('Pandit Narendra Mishra - Vedic Puja')">Select Vedic Puja</button>
+                    <button onclick="selectService('Pandit Narendra Mishra - Navagraha Pooja')">Select Navagraha Pooja</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        function selectService(serviceName) {
+            // Save the selected service to localStorage
+            localStorage.setItem('selectedService', serviceName);
+            // Navigate to the Packages page
+            window.location.href = 'packages.html';
+        }
+
+        // Pause video on mobile devices to save data
+        function handleVideo() {
+            const video = document.getElementById('background-video');
+            if (window.innerWidth < 768) {
+                video.pause();
+            } else {
+                video.play();
+            }
+        }
+
+        // Initialize and add resize listener
+        window.addEventListener('load', handleVideo);
+        window.addEventListener('resize', handleVideo);
+    </script>
+</body>
+</html>

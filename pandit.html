@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pandit Details - VIDHI VIDHAN</title>
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --accent-dark: #d97706;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --light-bg: #f8fafc;
+            --dark-bg: #343a40;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.2);
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --transition-fast: all 0.15s ease;
+            --transition-normal: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            perspective: 1000px;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100vw) rotate(360deg) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(90deg, var(--dark-bg), #2c3237);
+            color: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            transform-style: preserve-3d;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transform-style: preserve-3d;
+            transition: var(--transition-normal);
+            text-decoration: none;
+        }
+
+        .logo:hover {
+            transform: translateZ(10px);
+        }
+
+        .logo img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+            transition: var(--transition-normal);
+            transform-style: preserve-3d;
+        }
+
+        .logo:hover img {
+            transform: rotateY(180deg) translateZ(5px);
+        }
+
+        .navbar {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-fast);
+            padding: 0.5rem 0;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .navbar a:hover {
+            color: var(--accent-color);
+            transform: translateZ(5px);
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition-normal);
+            transform: translateZ(-1px);
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(5px);
+            transform-style: preserve-3d;
+        }
+
+        /* Pandit Details Section */
+        .pandit-details {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            gap: 30px;
+            transform-style: preserve-3d;
+            transition: var(--transition-normal);
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .pandit-details:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .pandit-details:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .pandit-details:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) rotateX(10deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+
+        .pandit-info {
+            flex: 1;
+            padding: 20px;
+            transform-style: preserve-3d;
+        }
+
+        .pandit-info h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .pandit-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 3px;
+            transition: var(--transition-normal);
+        }
+
+        .pandit-info:hover h2::after {
+            width: 100px;
+        }
+
+        .pandit-info p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .pandit-info strong {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .pandit-photo {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .pandit-photo img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            object-fit: cover;
+            transition: var(--transition-normal);
+            transform-style: preserve-3d;
+        }
+
+        .pandit-photo:hover img {
+            transform: translateZ(20px) rotateY(5deg);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* 3D Effect on Hover for Pandit Cards */
+        .pandit-details {
+            transition: transform 0.5s ease;
+        }
+
+        .pandit-details:hover {
+            transform: translateY(-10px) translateZ(10px);
+        }
+
+        /* Services Section */
+        .services-section {
+            background-color: rgba(247, 247, 247, 0.9);
+            padding: 40px 20px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 40px;
+            transform-style: preserve-3d;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.8s;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .services-section h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 3px;
+        }
+
+        .services-list {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .service-item {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            width: calc(25% - 20px);
+            transition: var(--transition-normal);
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px) translateZ(10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .service-icon {
+            max-width: 60px;
+            margin-bottom: 15px;
+            transition: var(--transition-normal);
+            transform-style: preserve-3d;
+        }
+
+        .service-item:hover .service-icon {
+            transform: rotateY(180deg) scale(1.1);
+        }
+
+        .service-item h4 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-item p {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: rgba(244, 244, 249, 0.9);
+            padding: 40px 20px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            transform-style: preserve-3d;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 1s;
+            opacity: 0;
+        }
+
+        .contact-section h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .contact-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 3px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: var(--border-radius-md);
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            transition: var(--transition-normal);
+            transform-style: preserve-3d;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            transform: translateZ(5px);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: var(--transition-normal);
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: var(--transition-normal);
+        }
+
+        .contact-form button:hover::before {
+            left: 100%;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-3px) translateZ(10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            font-size: 1rem;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        footer a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .pandit-details {
+                flex-direction: column;
+            }
+            
+            .service-item {
+                width: calc(50% - 20px);
+            }
+            
+            /* Disable 3D effects on tablet for performance */
+            .pandit-details, .service-item, .logo, .navbar a {
+                transform: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 1rem;
+            }
+            
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .service-item {
+                width: 100%;
+            }
+            
+            .contact-form input,
+            .contact-form textarea {
+                width: 100%;
+            }
+            
+            /* Disable 3D effects on mobile for performance */
+            .pandit-photo img, .service-icon {
+                transform: none !important;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg" id="animatedBg"></div>
+
+    <header>
+        <a href="#" class="logo">
+            <img src="LOGO FOR VIDHIVIDHAN.png" alt="Logo"> VIDHI VIDHAN
+        </a>
+        <nav>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="BookNow.html">Book Now</a></li>
+                <li><a href="payment.html">Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Pandit 1: Ravi Shankar -->
+        <section class="pandit-details">
+            <div class="pandit-info">
+                <h2>Pandit Ravi Shankar</h2>
+                <p><strong>Specialization:</strong> Vedic Rituals, Astrology, Puja Services</p>
+                <p><strong>Experience:</strong> 15+ Years of experience in performing Vedic Pujas and Astrological Consultations</p>
+                <p>Pandit Ravi Shankar is a well-respected priest in the community known for his deep knowledge of Vedic rituals and astrology. With over 15 years of experience, he has helped countless individuals with their spiritual journeys and daily blessings.</p>
+            </div>
+            <div class="pandit-photo">
+                <img src="pandit1.png" alt="Pandit Ravi Shankar">
+            </div>
+        </section>
+
+        <!-- Pandit 2: Pandit Vikram -->
+        <section class="pandit-details">
+            <div class="pandit-info">
+                <h2>Pandit Vikram</h2>
+                <p><strong>Specialization:</strong> Vedic Rituals, Marriage Ceremonies, Pujas</p>
+                <p><strong>Experience:</strong> 10+ Years of experience in conducting traditional marriage ceremonies and spiritual guidance</p>
+                <p>Pandit Vikram is known for his ability to perform traditional and highly personalized marriage ceremonies. He has worked with numerous families, ensuring that the sacred rituals are executed with precision and devotion.</p>
+            </div>
+            <div class="pandit-photo">
+                <img src="pandit2.png" alt="Pandit Vikram">
+            </div>
+        </section>
+
+        <!-- Pandit 3: Pandit Rajesh -->
+        <section class="pandit-details">
+            <div class="pandit-info">
+                <h2>Pandit Rajesh</h2>
+                <p><strong>Specialization:</strong> Birth Pujas, Astrology, Karma Remedies</p>
+                <p><strong>Experience:</strong> 20+ Years of experience in conducting specialized Birth Pujas and Astrology-based remedies</p>
+                <p>Pandit Rajesh is a renowned astrologer and spiritual guide with over 20 years of experience. He is known for offering insightful astrology consultations and performing powerful birth pujas to remove obstacles and bring prosperity.</p>
+            </div>
+            <div class="pandit-photo">
+                <img src="pandit3.png" alt="Pandit Rajesh">
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <h3>Our Services</h3>
+            <div class="services-list">
+                <div class="service-item">
+                    <img src="vedic-puja-icon.png" alt="Vedic Puja" class="service-icon">
+                    <h4>Vedic Puja</h4>
+                    <p>Personalized Vedic Pujas for all occasions and spiritual needs.</p>
+                </div>
+                <div class="service-item">
+                    <img src="astrology-icon.png" alt="Astrology" class="service-icon">
+                    <h4>Astrology</h4>
+                    <p>Consultations on astrology for life guidance and solutions.</p>
+                </div>
+                <div class="service-item">
+                    <img src="marriage-icon.png" alt="Marriage" class="service-icon">
+                    <h4>Marriage Ceremony</h4>
+                    <p>Traditional marriage ceremonies and blessings for a prosperous life.</p>
+                </div>
+                <div class="service-item">
+                    <img src="birthday-icon.png" alt="Birthday" class="service-icon">
+                    <h4>Birthday Pujas</h4>
+                    <p>Special pujas to bless your new year and bring good fortune.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h3>Contact Pandit Ravi Shankar</h3>
+            <form class="contact-form" id="contactForm">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+                <textarea id="message" name="message" placeholder="Your Message and Preferred Service" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        function selectPackage(name, price) {
+            // Store the selected package details in localStorage
+            localStorage.setItem('selectedPackage', JSON.stringify({ name, price }));
+            // Navigate to the Pandit Page
+            window.location.href = 'pandit.html';
+        }
+        
+        const selectedPackage = JSON.parse(localStorage.getItem('selectedPackage'));
+        console.log(selectedPackage); // { name: 'Premium Package', price: 5000 }
+
+        // Create animated background elements
+        function createAnimatedBackground() {
+            const bgContainer = document.getElementById('animatedBg');
+            const elementCount = 15;
+            
+            for (let i = 0; i < elementCount; i++) {
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                
+                // Random size between 20 and 100px
+                const size = Math.random() * 80 + 20;
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                
+                // Random position
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay and duration
+                element.style.animationDelay = `${Math.random() * 20}s`;
+                element.style.animationDuration = `${Math.random() * 10 + 20}s`;
+                
+                bgContainer.appendChild(element);
+            }
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            createAnimatedBackground();
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2023 VIDHI VIDHAN. All Rights Reserved.</p>
+        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+</body>
+</html>
